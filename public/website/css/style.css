@@ -8,7 +8,7 @@ body {
 
 .p1-gradient-bg, .thumb .overlay-bg {
   background: -moz-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
-  background: -webkit-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
+  background: -webkit-linear-gradient(0deg, #8490ff 0%, #8f9396 100%);
   background: -ms-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%); }
 
 .p1-gradient-color {
@@ -150,7 +150,7 @@ a {
   overflow: hidden; }
   .site-hero, .site-hero .row {
     height: 100vh;
-    min-height: 800px; }
+    min-height: 780px; }
   .site-hero:before {
     content: "";
     position: absolute;

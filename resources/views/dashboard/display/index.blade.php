@@ -44,16 +44,13 @@
 			<div class="row intro-text align-items-center justify-content-center">
 				<div class="col-md-10 text-center pt-5">
 
-					<h1 class="site-heading site-animate">Hello, I'm <strong class="d-block">Alya Dhiya' Mardhiyyah</strong></h1>
+					<h1 class="site-heading site-animate">Hello, I'm <strong class="d-block">{{Auth::user()->name}}</strong></h1>
 					<strong class="d-block text-white text-uppercase letter-spacing">and this is My Rezume</strong>
 
 				</div>
 			</div>
 		</div>
 	</section> <!-- section -->
-
-	<?php $i = 1; ?>
-        @foreach ($data as $item)
 
 	<section class="site-section" id="section-portfolio">
 		<div class="container">
@@ -74,23 +71,28 @@
 
 			<div class="filters-content">
 				<div class="row grid">
+					<?php $i = 1; ?>
+                    @foreach ($porto as $item)
 					<div class="single-portfolio col-sm-4 all mockup">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="{{ asset('website') }}/images/p1.jpg" alt="">
+								<img class="image img-fluid" src="{{ asset($item->image_file_url) }}" alt="">
 							</div>
-							<a href="{{ asset('website') }}/images/p1.jpg" class="img-pop-up">  
+							<a href="{{ asset($item->image_file_url) }}" class="img-pop-up">  
 								<div class="middle">
 									<div class="text align-self-center d-flex"><img src="{{ asset('website') }}/images/preview.png" alt=""></div>
 								</div>
 							</a>                                  
 						</div>
 						<div class="p-inner">
-							<h4>Square Box Mockup</h4>
-							<div class="cat">Mockup</div>
+							<h4>{{ $item->title }}</h4>
+							<div class="cat">{{ $item->category->name }}</div>
 						</div>                                         
 					</div>
+					@endforeach
+
+
 					<div class="single-portfolio col-sm-4 all mockup">
 						<div class="relative">
 							<div class="thumb">
@@ -194,69 +196,30 @@
 				</div>
 				<div class="col-md-6">
 					<h2 class="mb-5">Education</h2>
+                    <?php $i = 1; ?>
+                    @foreach ($edu as $item)
 					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Masteral in Information Technology</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">New York University</span>
+						<span class="date"><span class="icon-calendar"></span> {{ $item->start_date_indo }} - {{ $item->end_date_indo }}</span>
+						<h3>{{ $item->title }}</h3>
+						<p>{{ $item->content }}</p>
+						<span class="school">{{ $item->info1 }}</span>
 					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present Deacember.</span>
-						<h3>Masteral in Information Technology</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">New York University</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Masteral in Information Technology</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">New York University</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present Deacember.</span>
-						<h3>Masteral in Information Technology</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">New York University</span>
-					</div>
-
+                    @endforeach
 				</div>
 				<div class="col-md-6">
 
-
+                    
 					<h2 class="mb-5">Experience</h2>
 
+                    <?php $i = 1; ?>
+                    @foreach ($exp as $item)
 					<div class="resume-item mb-4">
 						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Github</span>
+						<h3>{{ $item->title }}</h3>
+						<p>{{ $item->content }}</p>
+						<span class="school">{{ $item->info1 }}</span>
 					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Facebook</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Twitter</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Shopify</span>
-					</div>
-
-
+                    @endforeach
 				</div>
 			</div>
 		</div>
@@ -522,8 +485,6 @@
 			</div>
 		</div>
 	</section>
-
-	@endforeach
 
 	<footer class="site-footer">
 		<div class="container">
